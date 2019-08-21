@@ -1,0 +1,82 @@
+$details-height: 170px;
+
+.car-credit {
+  border: 2px solid red;
+
+  &__title {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  &__title-calc {
+    font-size: 32px;
+    font-weight: 900;
+    margin-right:10px;
+  }
+
+  &__title-model {
+    font-size: 32px;
+    color: #828282;
+  }
+
+  &__details {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 20px;
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__discount {
+        background-color:#f46142;
+        color:white;
+        height:25px;
+        border-radius:10px;
+      }   
+    }
+  }
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__view {
+    display: flex;
+    height: $details-height;
+    border-radius: 8px;
+  }
+
+  &__img {
+    height: $details-height;
+    object-fit: contain;
+  }
+
+  &__dealer {
+    display: flex;
+    justify-content:flex-end;
+    color:#828282;
+    font-size:16px;
+
+    &-address {
+      margin:0 20px 0 10px ;
+      
+    }
+
+    &-phone {
+      margin:0 20px 0 10px ;
+    }
+  }
+}
+
+
+

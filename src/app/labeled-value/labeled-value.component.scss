@@ -1,0 +1,22 @@
+.labeled-value {
+  width: 140px;
+  height: 80px;
+  margin-top: 50px;
+  margin-left: 10px;
+  text-align: left;
+
+  &__label {
+    font-size: 14px;
+    color: #ccc;
+  }
+  &__value {
+    font-size: 24px;
+    color: #a0a0a0;
+    font-weight: 900;
+    margin-top:20px;
+    &_highlight {
+      color:black;
+      font-size: 26px;
+    }
+  }
+}

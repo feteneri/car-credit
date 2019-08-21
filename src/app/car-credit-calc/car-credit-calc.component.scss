@@ -1,0 +1,25 @@
+.car-credit-calc{
+  &__title{
+    margin-top:20px;
+    text-align: left;
+  }
+
+  &__ranges{
+    display: flex;
+    justify-content:space-between;
+    margin:20px 0 30px 0;
+  }
+
+  &__values{
+    display: flex;
+    justify-content:space-between;
+  }
+
+  &__values-button{
+    background-color:#F46142;
+    border:none;
+    border-radius:10px;
+    color:white;
+    width:300px;
+  }
+}

@@ -1,0 +1,40 @@
+<div ngClass="car-credit">
+  <div ngClass="car-credit__title">
+    <div ngClass="car-credit__title-calc">Расчет кредита</div>
+    <div ngClass="car-credit__title-model">{{ car.brand }} {{ car.model }} {{ car.complect }}</div>
+  </div>
+  <div ngClass="car-credit__view">
+    <img src="{{ car.imgSrc }}" ngClass="car-credit__img" />
+    <div ngClass="car-credit__details">
+      <div ngClass="car-credit__details-left">
+        <h3 ngClass="car-credit__name">{{ car.brand }} {{ car.model }} {{ car.complect }}</h3>
+        <div ngClass="car-credit__labels">
+          <app-labeled-value [label]="car.engine" [value]="car.engineHp"></app-labeled-value>
+          <app-labeled-value
+            [label]="car.driveDirection"
+            [value]="car.driveType"
+          ></app-labeled-value>
+          <app-labeled-value
+            [label]="car.transmissionQuantity"
+            [value]="car.transmissionType"
+          ></app-labeled-value>
+        </div>
+      </div>
+      <div ngClass="car-credit__details-right">
+        <div ngClass="car-credit__details-right__discount">Скидка {{car.discount}}</div>
+        <app-labeled-value
+          [label]="'Стоимость\u00A0автомобиля'"
+          [value]="car.price"
+          [highlight]="true"
+        ></app-labeled-value>
+      </div>
+    </div>
+  </div>
+  <div ngClass="car-credit__dealer">
+    <i class="fas fa-map-marker"></i>
+    <div ngClass="car-credit__dealer-address">{{ car.dealerAddress }}</div>
+    <i class="fas fa-phone-alt"></i>
+    <div ngClass="car-credit__dealer-phone">{{ car.dealerPhone }}</div>
+  </div>
+  <app-car-credit-calc></app-car-credit-calc>
+</div>

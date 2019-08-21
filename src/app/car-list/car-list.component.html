@@ -1,0 +1,13 @@
+
+  <div ngClass='app-car-list'>
+    <div ngClass='app-car-list__title'>
+      <div ngClass='app-car-list__title__container'>
+        <div ngClass='app-car-list__title__brand'>Toyota</div> 
+        <div ngClass="app-car-list__title__count">467</div>
+      </div>
+      <button ngClass="app-car-list__title__btn">Все модели Toyota</button>
+    </div>
+    <div ngClass='app-car-list__images'>
+      <app-car-preview *ngFor="let car of cars" [car]="car" ></app-car-preview>
+    </div>
+  </div>

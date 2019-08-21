@@ -1,0 +1,39 @@
+<div ngClass="car-credit-calc">
+  <div ngClass="car-credit-calc__title">Настройки кредита</div>
+  <div ngClass="car-credit-calc__ranges">
+    <app-credit-range
+      [title]="'Первоначальный взнос'"
+      [min]="0"
+      [max]="5000000"
+      [step]="10000"
+      [value]="500000"
+    ></app-credit-range>
+    <app-credit-range
+      [title]="'Готов платить'"
+      [min]="100000"
+      [max]="500000"
+      [step]="10000"
+      [value]="150000"
+    ></app-credit-range>
+    <app-credit-range
+      [title]="'Срок кредита'"
+      [min]="1"
+      [max]="7"
+      [step]="1"
+      [value]="5"
+    ></app-credit-range>
+  </div>
+  <div ngClass="car-credit-calc__values">
+    <app-labeled-value [label]="'Сумма\u00A0выплат'" [value]="'от 157 000 Р'"></app-labeled-value>
+
+    <app-labeled-value [label]="'Процентная\u00A0ставка'" [value]="'от 12 %'"></app-labeled-value>
+
+    <app-labeled-value
+      [label]="'Платеж в\u00A0месяц'"
+      [value]="'от 88 990 Р/мес'"
+      [highlight]="true"
+    ></app-labeled-value>
+
+    <button ngClass="car-credit-calc__values-button">отправить заявку</button>
+  </div>
+</div>

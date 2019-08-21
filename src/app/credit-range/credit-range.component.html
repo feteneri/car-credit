@@ -1,0 +1,15 @@
+<div ngClass="credit-range">
+  <div ngClass="credit-range__title">{{ title }}</div>
+  <div ngClass="credit-range__values">
+    <div ngClass="credit-range__values-value">{{ value }}</div>
+    <div ngClass="credit-range__values-alt-value">...</div>
+  </div>
+  <input
+    ngClass="credit-range__input"
+    type="range"
+    min="{{ min }}"
+    max="{{ max }}"
+    step="{{ step }}"
+    [(ngModel)]="value"
+  />
+</div>

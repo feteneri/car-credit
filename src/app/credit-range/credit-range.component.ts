@@ -11,7 +11,11 @@ export class CreditRangeComponent implements OnInit {
   @Input() max: number;
   @Input() step: number;
   @Input() value: number;
-  constructor() {}
+  @Input() units: string;
+  @Input() altValue?: number;
+  @Input() onChange: (value: number) => {};
+  constructor() {
+  }
 
   ngOnInit() {}
 }

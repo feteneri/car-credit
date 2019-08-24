@@ -3,34 +3,44 @@
   <div ngClass="car-credit-calc__ranges">
     <app-credit-range
       [title]="'Первоначальный взнос'"
-      [min]="0"
-      [max]="5000000"
-      [step]="10000"
-      [value]="500000"
+      [min]="calc.minFirstPayment"
+      [max]="calc.maxFirstPayment"
+      [step]="calc.firstPaymentStep"
+      [value]="calc.firstPaymentValue"
+      [units]="'rubles'"
+      [altValue]="calc.altValueFirstPay"
+      [onChange]="calc.onChangeFirstPaymentValue"
     ></app-credit-range>
     <app-credit-range
       [title]="'Готов платить'"
-      [min]="100000"
-      [max]="500000"
-      [step]="10000"
-      [value]="150000"
+      [min]="calc.minWillPay"
+      [max]="calc.maxWillPay"
+      [step]="calc.willPayStep"
+      [value]="calc.willPayValue"
+      [units]="'rubles'"
+      [onChange]="calc.onChangeWillPayValue"
     ></app-credit-range>
     <app-credit-range
       [title]="'Срок кредита'"
-      [min]="1"
-      [max]="7"
-      [step]="1"
-      [value]="5"
+      [min]="calc.minTerm"
+      [max]="calc.maxTerm"
+      [step]="calc.termStep"
+      [value]="calc.termValue"
+      [units]="'months'"
+      [onChange]="calc.onChangeTermValue"
     ></app-credit-range>
   </div>
   <div ngClass="car-credit-calc__values">
-    <app-labeled-value [label]="'Сумма\u00A0выплат'" [value]="'от 157 000 Р'"></app-labeled-value>
+    <app-labeled-value [label]="'Сумма\u00A0выплат'" [value]="calc.totalSumm"></app-labeled-value>
 
-    <app-labeled-value [label]="'Процентная\u00A0ставка'" [value]="'от 12 %'"></app-labeled-value>
+    <app-labeled-value
+      [label]="'Процентная\u00A0ставка'"
+      [value]="calc.creditRate * 100"
+    ></app-labeled-value>
 
     <app-labeled-value
       [label]="'Платеж в\u00A0месяц'"
-      [value]="'от 88 990 Р/мес'"
+      [value]="calc.monthlyPayment"
       [highlight]="true"
     ></app-labeled-value>
 

@@ -10,6 +10,10 @@ import { CarCreditComponent } from './car-credit/car-credit.component';
 import { CarCreditCalcComponent } from './car-credit-calc/car-credit-calc.component';
 import { LabeledValueComponent } from './labeled-value/labeled-value.component';
 import { CreditRangeComponent } from './credit-range/credit-range.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { PopupComponent } from './popup/popup.component';
+import { RublesPipe } from './rubles.pipe';
+import { PeriodPipe } from './period.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { CreditRangeComponent } from './credit-range/credit-range.component';
     CarCreditComponent,
     CarCreditCalcComponent,
     LabeledValueComponent,
-    CreditRangeComponent
+    CreditRangeComponent,
+    QuestionsComponent,
+    PopupComponent,
+    RublesPipe,
+    PeriodPipe
   ],
   imports: [
     BrowserModule,

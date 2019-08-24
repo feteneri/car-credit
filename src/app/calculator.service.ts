@@ -8,6 +8,7 @@ const MONTHS_IN_YEAR = 12;
 })
 export class CalculatorService {
   carPrice: number = 0;
+  creditRate: number = 0;
   minFirstPayment: number = 0;
   maxFirstPayment: number = 0;
   firstPaymentValue: number = 0;
@@ -22,40 +23,79 @@ export class CalculatorService {
   altValueTerm: number = 0;
 
   constructor(carPrice: number) {
-    Object.keys(config).forEach(configKey => {
-      this[configKey] = config[configKey];
-    });
     this.carPrice = carPrice;
+    this.creditRate = config.creditRate;
+    this.updateTermValue();
+    this.updateMonthlyPayment();
+    this.updateWillPayRange();
+    this.updateTotalSumm();
+
     this.minFirstPayment = carPrice * config.minFirstPaymentCoeff;
     this.maxFirstPayment = carPrice * config.maxFirstPaymentCoeff;
     this.firstPaymentValue = Math.round(carPrice * config.firstPaymentValueCoeff);
     this.firstPaymentStep = Math.round((this.maxFirstPayment - this.minFirstPayment) / 10);
     this.altValueFirstPay = (this.firstPaymentValue / carPrice) * 100;
     this.altValueTerm = this.termValue / 12;
-    const sum = carPrice - this.firstPaymentValue;
-    const percent = config.creditRate / MONTHS_IN_YEAR;
-    const getWillPayByMountCount = monthCount =>
-      sum * (percent + percent / ((1 + percent) ** monthCount - 1));
-    this.minWillPay = getWillPayByMountCount(config.maxTerm);
-    this.maxWillPay = getWillPayByMountCount(config.minTerm);
-    this.monthlyPayment = getWillPayByMountCount(this.termValue);
-    this.totalSumm = Math.round(this.monthlyPayment * this.termValue);
-    this.termValue = Math.round((config.maxTerm - config.minTerm) / 2);
-
-    this.willPayValue = Math.round((this.minWillPay + this.maxWillPay) / 2);
-    // etc
   }
 
+  /* change handlers */
   onChangeFirstPaymentValue = value => {
-    // this.firstPaymentValue = value;
+    this.firstPaymentValue = value;
+    this.updateMonthlyPayment();
+    this.updateWillPayRange();
+    this.updateTotalSumm();
     this.altValueFirstPay = Math.round((value / this.carPrice) * 100);
   };
 
   onChangeWillPayValue = (value: number) => {
-    // this.willPayValue = value;
+    this.willPayValue = value;
   };
-  
+
   onChangeTermValue = (value: number) => {
-    // this.termValue = value;
+    this.termValue = value;
+    this.updateMonthlyPayment();
   };
+  /* end: change handlers */
+
+  /* calculations */
+
+  updateTermValue = () => {
+    this.termValue = Math.round((config.maxTerm - config.minTerm) / 2);
+  };
+
+  getCreditSumm = () => this.carPrice - this.firstPaymentValue;
+
+  getMonthlyPercent = () => config.creditRate / MONTHS_IN_YEAR / 100;
+
+  getMonthlyPayment = (mountCount: number) => {
+    const sum = this.getCreditSumm();
+    const percent = this.getMonthlyPercent();
+    return sum * (percent + percent / ((1 + percent) ** mountCount - 1));
+  };
+
+  updateMonthlyPayment = () => {
+    this.monthlyPayment = this.getMonthlyPayment(this.termValue);
+  };
+
+  getWillPayRange = () => {
+    const minWillPay = this.getMonthlyPayment(config.maxTerm);
+    const maxWillPay = this.getMonthlyPayment(config.minTerm);
+    const willPayValue = (minWillPay + maxWillPay) / 2;
+    return { minWillPay, maxWillPay, willPayValue };
+  };
+
+  updateWillPayRange = () => {
+    const { minWillPay, maxWillPay, willPayValue } = this.getWillPayRange();
+    this.minWillPay = minWillPay;
+    this.maxWillPay = maxWillPay;
+    this.willPayValue = willPayValue;
+  };
+
+  getTotalSumm = () => this.monthlyPayment * this.termValue;
+
+  updateTotalSumm = () => {
+    this.totalSumm = this.getTotalSumm();
+  };
+
+  /* end: calculations */
 }

@@ -31,19 +31,19 @@
     ></app-credit-range>
   </div>
   <div ngClass="car-credit-calc__values">
-    <app-labeled-value [label]="'Сумма\u00A0выплат'" [value]="calc.totalSumm"></app-labeled-value>
+    <app-labeled-value [label]="'Сумма\u00A0выплат'" [value]="calc.totalSumm | rubles"></app-labeled-value>
 
     <app-labeled-value
       [label]="'Процентная\u00A0ставка'"
-      [value]="calc.creditRate * 100"
+      [value]="calc.creditRate + '%'"
     ></app-labeled-value>
 
     <app-labeled-value
       [label]="'Платеж в\u00A0месяц'"
-      [value]="calc.monthlyPayment"
+      [value]="calc.monthlyPayment | rubles"
       [highlight]="true"
     ></app-labeled-value>
 
-    <button ngClass="car-credit-calc__values-button">отправить заявку</button>
+    <button ngClass="car-credit-calc__values-button">Отправить заявку</button>
   </div>
 </div>

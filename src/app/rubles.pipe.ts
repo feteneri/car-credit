@@ -8,10 +8,13 @@ export class RublesPipe implements PipeTransform {
     return `${Math.round(value)
       .toString()
       .split('')
-      .reduceRight((previousValue, currentValue, index, array) => {
-        return index % 3 === 1 ? [...previousValue ,currentValue ,' '] : [...previousValue, currentValue];
+      .reverse()
+      .reduce((prevChars, currentChar, charIndex) => {
+        return charIndex !== 0 && charIndex % 3 === 0
+          ? [...prevChars, ' ', currentChar]
+          : [...prevChars, currentChar];
       }, [])
       .reverse()
-      .join("")} ₽`;
+      .join('')} ₽`;
   }
 }

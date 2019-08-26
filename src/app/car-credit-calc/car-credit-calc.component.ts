@@ -8,10 +8,11 @@ import { CalculatorService } from '../calculator.service';
 })
 export class CarCreditCalcComponent implements OnInit {
   calc: CalculatorService;
-  @Input() onSubmit: () => void;F
-  constructor() {
-    this.calc = new CalculatorService(5130000);
-  }
+  @Input() car: any;
+  @Input() onSubmit: () => void;
+  constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.calc = new CalculatorService(this.car.price);
+  }
 }

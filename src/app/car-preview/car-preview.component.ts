@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarPreviewComponent implements OnInit {
   @Input() car: any;
-  // constructor() {}
+  constructor() {}
 
   ngOnInit() {}
 }

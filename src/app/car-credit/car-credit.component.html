@@ -24,7 +24,7 @@
         <div ngClass="car-credit__details-right__discount">Скидка {{car.discount}}</div>
         <app-labeled-value
           [label]="'Стоимость\u00A0автомобиля'"
-          [value]="car.price"
+          [value]="car.price | rubles"
           [highlight]="true"
         ></app-labeled-value>
       </div>
@@ -36,7 +36,7 @@
     <i class="fas fa-phone-alt"></i>
     <div ngClass="car-credit__dealer-phone">{{ car.dealerPhone }}</div>
   </div>
-  <app-car-credit-calc [onSubmit]="triggerPopup"></app-car-credit-calc>
+  <app-car-credit-calc [onSubmit]="triggerPopup" [car]="car"></app-car-credit-calc>
   <app-questions></app-questions>
   <app-popup *ngIf="showPopup" [onClose]="triggerPopup"></app-popup>
 </div>

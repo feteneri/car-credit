@@ -3,6 +3,8 @@ import { config, Config } from '../config';
 
 const MONTHS_IN_YEAR = 12;
 
+const getBaseLog = (x: number, y: number): number => Math.log(y) / Math.log(x);
+
 @Injectable({
   providedIn: 'root',
 })
@@ -44,6 +46,7 @@ export class CalculatorService {
 
   /* change handlers */
   onChangeFirstPaymentValue = value => {
+    console.log('onChangeFirstPaymentValue');
     this.firstPaymentValue = value;
     this.updateMonthlyPayment();
     this.updateWillPayRange();
@@ -52,10 +55,13 @@ export class CalculatorService {
   };
 
   onChangeWillPayValue = (value: number) => {
+    console.log('onChangeWillPayValue');
     this.willPayValue = value;
+    this.termValue = this.getTermByMonthlyPayment();
   };
 
   onChangeTermValue = (value: number) => {
+    console.log('onChangeTermValue');
     this.termValue = value;
     this.updateMonthlyPayment();
     this.updateWillPayRange();
@@ -71,12 +77,12 @@ export class CalculatorService {
 
   getCreditSumm = () => this.carPrice - this.firstPaymentValue;
 
-  getMonthlyPercent = () => config.creditRate / MONTHS_IN_YEAR / 100;
+  getMonthlyPercent = () => 1 + config.creditRate / MONTHS_IN_YEAR / 100;
 
-  getMonthlyPayment = (mountCount: number) => {
-    const sum = this.getCreditSumm();
+  getMonthlyPayment = (monthCount: number) => {
+    const summ = this.getCreditSumm();
     const percent = this.getMonthlyPercent();
-    return sum * (percent + percent / ((1 + percent) ** mountCount - 1));
+    return percent ** monthCount * ((percent - 1) / (percent ** monthCount - 1))*summ;
   };
 
   updateMonthlyPayment = () => {
@@ -101,6 +107,15 @@ export class CalculatorService {
 
   updateTotalSumm = () => {
     this.totalSumm = this.getTotalSumm();
+  };
+
+  getTermByMonthlyPayment = () => {
+    const summ = this.getCreditSumm();
+    const percent = this.getMonthlyPercent();
+    return getBaseLog(
+      1 + percent,
+      (summ + this.willPayValue - percent * summ) / (this.willPayValue - percent * summ)
+    );
   };
 
   /* end: calculations */

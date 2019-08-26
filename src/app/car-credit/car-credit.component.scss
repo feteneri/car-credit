@@ -1,18 +1,28 @@
 $details-height: 170px;
 
 .car-credit {
-  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  &__grow {
+    flex-grow: 1;
+  }
+  &__container {
+    padding: 40px 0;
+  }
+  &__name {
+    font-weight: bold;
+  }
 
   &__title {
     display: flex;
-    margin-top: 20px;
     margin-bottom: 30px;
   }
 
   &__title-calc {
     font-size: 32px;
     font-weight: 900;
-    margin-right:10px;
+    margin-right: 10px;
   }
 
   &__title-model {
@@ -30,6 +40,9 @@ $details-height: 170px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      flex-grow: 1;
+      align-items: start;
+      margin-right: 40px;
     }
 
     &-right {
@@ -38,45 +51,49 @@ $details-height: 170px;
       justify-content: space-between;
 
       &__discount {
-        background-color:#f46142;
-        color:white;
-        height:25px;
-        border-radius:10px;
-      }   
+        background-color: #f46142;
+        color: white;
+        height: 25px;
+        line-height: 25px;
+        border-radius: 10px;
+        padding: 0 8px;
+      }
     }
   }
   &__labels {
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 
   &__view {
     display: flex;
     height: $details-height;
     border-radius: 8px;
+    background: white;
+    box-shadow: 0 0 20px rgba(35, 35, 35, 0.2);
+    margin-bottom: 20px;
   }
 
   &__img {
     height: $details-height;
     object-fit: contain;
+    padding: 5px;
+    box-sizing: border-box;
   }
 
   &__dealer {
     display: flex;
-    justify-content:flex-end;
-    color:#828282;
-    font-size:16px;
+    justify-content: flex-end;
+    color: #828282;
+    font-size: 16px;
 
     &-address {
-      margin:0 20px 0 10px ;
-      
+      margin: 0 20px 0 10px;
     }
 
     &-phone {
-      margin:0 20px 0 10px ;
+      margin: 0 20px 0 10px;
     }
   }
 }
-
-
-

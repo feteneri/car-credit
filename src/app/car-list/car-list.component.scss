@@ -1,36 +1,41 @@
-.app-car-list__title{
-  display:flex;
-  justify-content:space-between;
-  margin-left:10px;
-  margin:30px 10px 30px 10px;
+.app-car-list__container {
+  padding: 40px 0 80px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.app-car-list__title {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin: 0 10px 30px 10px;
 }
 
-.app-car-list__title__brand{
-font-size:32px;
-font-weight:900;
-margin-right:30px;
+.app-car-list__title__brand {
+  font-size: 32px;
+  font-weight: 900;
+  margin-right: 30px;
 }
-.app-car-list__title__count{
-  font-size:32px;
-  color:#bdbdbd;
+.app-car-list__title__count {
+  font-size: 32px;
+  color: #bdbdbd;
 }
-.app-car-list__title__btn{
+.app-car-list__title__btn {
   border: none;
-  background-color:transparent;
-  color:#fa715c;
-  font-size:18px;
+  background-color: transparent;
+  color: #fa715c;
+  font-size: 18px;
 }
 
-.app-car-list__images{
-  margin-left:auto;
-  margin-right:auto;
-  display:flex;
-  justify-content:space-between;
+.app-car-list__images {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
   @media screen and (max-width: 1024px) {
-    flex-wrap:wrap;
-    }
+    flex-wrap: wrap;
+  }
 }
 
-.app-car-list__title__container{
-  display:flex;
+.app-car-list__title__container {
+  display: flex;
 }

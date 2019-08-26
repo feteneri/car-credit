@@ -14,4 +14,9 @@
     step="{{ step }}"
     [(ngModel)]="value"
     (ngModelChange)="onChange(value)"
-/>
+  />
+  <div
+    ngClass="credit-range__input-thumb"
+    [ngStyle]="{ width: ((value - min) / (max - min)) * 100 + '%' }"
+  ></div>
+</div>

@@ -4,6 +4,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 99;
   background-color: rgba(0, 0, 0, 0.3);
   &__content {
     position: absolute;
@@ -17,8 +18,8 @@
     background-color: white;
     border-radius: 10px;
 
-    &-wrapper{
-      padding:40px 20px;
+    &-wrapper {
+      padding: 40px 20px;
     }
   }
   &__cross-button {
@@ -33,7 +34,6 @@
   &__img {
     color: #f98d56;
     padding-bottom: 20px;
-
   }
   &__title {
     font-size: 18px;

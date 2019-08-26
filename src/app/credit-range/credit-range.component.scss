@@ -1,62 +1,65 @@
-.credit-range{
-  width: 300px;
-  height:70px ;
-  border: 1px solid #828282;
-  border-radius:10px 10px 0 0;
-  background-color: #fafafa;
- 
+@import '../../variables.scss';
 
-  &__title{
-    margin: 15px 0;
-    }
-
-
-  &__values{
-  display:flex;
-  justify-content:space-between;
-  margin: 0 20px;
-  }
-
-
-  &__input{
-    overflow: hidden;
-    -webkit-appearance:none;
-    width:300px;
-    height:2px;
-    outline:none;
-
-  }
-
-  &__input::-webkit-slider-thumb{
-    -webkit-appearance:none;
-    width:20px;
-    height:20px;
-    background-color:#F46142;
-    border:solid 4px white;
-    border-radius:100%;
-  }
-
-  &__input::-moz-range-thumb{
-    -moz-appearance:none;
-    width:20px;
-    height:20px;
-    background-color:#F46142;
-    border:solid 4px white;
-    border-radius:100%;
-  }
-
-  &__input::-moz-range-track{
-      -moz-appearance:none;
-      border: 1px solid red;
-      width:300px;
-      height:2px;
-      background: -moz-linear-gradient(left, #F46142 0%, #F46142 25%, #fafafa 25%, #fafafa 100% );
-      outline:none;
-  }
-
-  &__input::-webkit-slider-runnable-track {
-    color: red;
-    background-color: red;
+:host {
+  width: 33%;
+  position: relative;
 }
 
+:host:not(:last-child) {
+  margin-right: 20px;
+}
+
+$input-height: 2px;
+$border-color: #bbb;
+
+.credit-range {
+  height: 70px;
+  border: 1px solid $border-color;
+  border-radius: 10px 10px 0 0;
+  background-color: #fafafa;
+  padding: 20px;
+  padding-bottom: 0;
+
+  &__title {
+    color: #777;
+    margin-bottom: 20px;
+  }
+
+  &__values {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input {
+    display: inline-block;
+    width: 100%;
+    height: $input-height;
+    outline: none;
+    -webkit-appearance: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $border-color;
+    cursor: pointer;
+
+    &-thumb {
+      height: $input-height;
+      position: absolute;
+      bottom: 0;
+      background-color: $main-color;
+      width: 30%;
+      left: 0;
+    }
+  }
+
+  &__input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: $main-color;
+    border: solid 4px white;
+    border-radius: 100%;
+    z-index: 2;
+    position: relative;
+  }
 }

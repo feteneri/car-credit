@@ -4,6 +4,7 @@
   border: 1px solid #828282;
   border-radius:10px 10px 0 0;
   background-color: #fafafa;
+ 
 
   &__title{
     margin: 15px 0;
@@ -18,11 +19,12 @@
 
 
   &__input{
+    overflow: hidden;
     -webkit-appearance:none;
-    background: -webkit-linear-gradient(left, #F46142 0%, #F46142 25%, #fafafa 25%, #fafafa 100% );
     width:300px;
     height:2px;
     outline:none;
+
   }
 
   &__input::-webkit-slider-thumb{
@@ -51,5 +53,10 @@
       background: -moz-linear-gradient(left, #F46142 0%, #F46142 25%, #fafafa 25%, #fafafa 100% );
       outline:none;
   }
+
+  &__input::-webkit-slider-runnable-track {
+    color: red;
+    background-color: red;
+}
 
 }

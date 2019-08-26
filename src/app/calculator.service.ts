@@ -17,6 +17,8 @@ export class CalculatorService {
   maxWillPay: number = 0;
   willPayValue: number = 0;
   termValue: number = 0;
+  maxTerm: number = 0;
+  minTerm: number = 0;
   totalSumm: number = 0;
   monthlyPayment: number = 0;
   altValueFirstPay: number = 0;
@@ -25,6 +27,8 @@ export class CalculatorService {
   constructor(carPrice: number) {
     this.carPrice = carPrice;
     this.creditRate = config.creditRate;
+    this.minTerm = config.minTerm;
+    this.maxTerm = config.maxTerm;
     this.updateTermValue();
     this.updateMonthlyPayment();
     this.updateWillPayRange();
@@ -54,6 +58,8 @@ export class CalculatorService {
   onChangeTermValue = (value: number) => {
     this.termValue = value;
     this.updateMonthlyPayment();
+    this.updateWillPayRange();
+    this.updateTotalSumm();
   };
   /* end: change handlers */
 
@@ -80,7 +86,7 @@ export class CalculatorService {
   getWillPayRange = () => {
     const minWillPay = this.getMonthlyPayment(config.maxTerm);
     const maxWillPay = this.getMonthlyPayment(config.minTerm);
-    const willPayValue = (minWillPay + maxWillPay) / 2;
+    const willPayValue = this.getMonthlyPayment(this.termValue);
     return { minWillPay, maxWillPay, willPayValue };
   };
 

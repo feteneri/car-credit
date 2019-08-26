@@ -36,7 +36,7 @@
     <i class="fas fa-phone-alt"></i>
     <div ngClass="car-credit__dealer-phone">{{ car.dealerPhone }}</div>
   </div>
-  <app-car-credit-calc></app-car-credit-calc>
+  <app-car-credit-calc [onSubmit]="triggerPopup"></app-car-credit-calc>
   <app-questions></app-questions>
-  <app-popup></app-popup>
+  <app-popup *ngIf="showPopup" [onClose]="triggerPopup"></app-popup>
 </div>

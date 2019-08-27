@@ -19,6 +19,7 @@ $border-color: #bbb;
   background-color: #fafafa;
   padding: 20px;
   padding-bottom: 0;
+  min-width:70px;
 
   &__title {
     color: #777;
@@ -28,6 +29,10 @@ $border-color: #bbb;
   &__values {
     display: flex;
     justify-content: space-between;
+    &-value {
+      color:black;
+      font-weight:700;
+    }
   }
 
   &__input {

@@ -1,6 +1,9 @@
 .labeled-value {
   flex-grow: 1;
   text-align: left;
+  @media screen and (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
 
   &__label {
     font-size: 14px;

@@ -20,8 +20,13 @@
 
     &-wrapper {
       padding: 40px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      align-items: center;
     }
-  }
+    }
+
   &__cross-button {
     background-color: transparent;
     border: none;
@@ -33,24 +38,31 @@
 
   &__img {
     color: #f98d56;
-    padding-bottom: 20px;
+    margin-bottom:40px;
   }
   &__title {
     font-size: 18px;
     font-weight: 900;
-    padding-bottom: 20px;
+    margin-bottom:20px;
   }
   &__p {
-    padding-bottom: 20px;
     color: #828282;
     font-weight: 700;
+    margin-bottom:20px;
   }
   &__return-button {
     background-color: #f98d56;
-    width: 200px;
-    height: 50px;
     color: white;
     border: none;
     border-radius: 8px;
+    width:300px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
   }
 }
+
+
+a {
+    text-decoration:none;
+  }

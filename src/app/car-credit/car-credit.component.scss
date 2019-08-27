@@ -4,6 +4,17 @@ $details-height: 170px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  &__cross-button {   
+    background-color: transparent;
+    border: none;
+    color: #828282;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    }
+
   &__grow {
     flex-grow: 1;
   }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { config, Config } from '../config';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 const MONTHS_IN_YEAR = 12;
 
@@ -21,16 +22,19 @@ export class CalculatorService {
   termValue: number = 0;
   maxTerm: number = 0;
   minTerm: number = 0;
+  termStep: number = 0;
   totalSumm: number = 0;
   monthlyPayment: number = 0;
   altValueFirstPay: number = 0;
-  altValueTerm: number = 0;
+  target: number = 0;
 
   constructor(carPrice: number) {
     this.carPrice = carPrice;
     this.creditRate = config.creditRate;
     this.minTerm = config.minTerm;
     this.maxTerm = config.maxTerm;
+    this.termStep = config.termStep;
+    this.firstPaymentValue = Math.round(carPrice * config.firstPaymentValueCoeff);
     this.updateTermValue();
     this.updateMonthlyPayment();
     this.updateWillPayRange();
@@ -38,13 +42,13 @@ export class CalculatorService {
 
     this.minFirstPayment = carPrice * config.minFirstPaymentCoeff;
     this.maxFirstPayment = carPrice * config.maxFirstPaymentCoeff;
-    this.firstPaymentValue = Math.round(carPrice * config.firstPaymentValueCoeff);
-    this.firstPaymentStep = Math.round((this.maxFirstPayment - this.minFirstPayment) / 10);
+    this.firstPaymentStep = carPrice / 10;
     this.altValueFirstPay = (this.firstPaymentValue / carPrice) * 100;
-    this.altValueTerm = this.termValue / 12;
   }
 
   /* change handlers */
+  getBaseLog = (x: number, y: number): number => Math.log(y) / Math.log(x);
+
   onChangeFirstPaymentValue = value => {
     console.log('onChangeFirstPaymentValue');
     this.firstPaymentValue = value;
@@ -55,17 +59,16 @@ export class CalculatorService {
   };
 
   onChangeWillPayValue = (value: number) => {
-    console.log('onChangeWillPayValue');
     this.willPayValue = value;
     this.termValue = this.getTermByMonthlyPayment();
   };
 
   onChangeTermValue = (value: number) => {
-    console.log('onChangeTermValue');
     this.termValue = value;
     this.updateMonthlyPayment();
     this.updateWillPayRange();
     this.updateTotalSumm();
+    
   };
   /* end: change handlers */
 
@@ -112,9 +115,8 @@ export class CalculatorService {
   getTermByMonthlyPayment = () => {
     const summ = this.getCreditSumm();
     const percent = this.getMonthlyPercent();
-    return getBaseLog(
-      1 + percent,
-      (summ + this.willPayValue - percent * summ) / (this.willPayValue - percent * summ)
+    return Math.round(getBaseLog
+      (1.01,(1+(0.01/((this.willPayValue/summ)-0.01))))
     );
   };
 

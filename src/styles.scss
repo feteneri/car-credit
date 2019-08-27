@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import './reset.css';
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+html,body {
+  font-family: 'Montserrat', sans-serif;
+}
 .container {
   @media screen and (max-width: 1024px) {
     width: 100%;

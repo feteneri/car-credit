@@ -12,7 +12,7 @@ export const carsList = [
     driveDirection: 'Полный',
     transmissionType: 'АКПП',
     transmissionQuantity: '6 ступеней',
-    price: 1000000,
+    price: 2390000,
     imgSrc: 'assets/img/hilux.jpg',
     discount: 200000,
     dealerAddress: 'Екатеринбург, ул. Восточная, 1',

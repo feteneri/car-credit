@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { config, Config } from '../config';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 const MONTHS_IN_YEAR = 12;
 
@@ -19,6 +18,7 @@ export class CalculatorService {
   minWillPay: number = 0;
   maxWillPay: number = 0;
   willPayValue: number = 0;
+  willPayStep: number = 0;
   termValue: number = 0;
   maxTerm: number = 0;
   minTerm: number = 0;
@@ -35,6 +35,7 @@ export class CalculatorService {
     this.maxTerm = config.maxTerm;
     this.termStep = config.termStep;
     this.firstPaymentValue = Math.round(carPrice * config.firstPaymentValueCoeff);
+    this.willPayStep = config.willPayStep;
     this.updateTermValue();
     this.updateMonthlyPayment();
     this.updateWillPayRange();
@@ -60,7 +61,7 @@ export class CalculatorService {
 
   onChangeWillPayValue = (value: number) => {
     this.willPayValue = value;
-    this.termValue = (Math.round(this.getTermByMonthlyPayment()/6)+1)*6;
+    this.termValue = (Math.round(this.getTermByMonthlyPayment() / 6) + 1) * 6;
   };
 
   onChangeTermValue = (value: number) => {
@@ -68,14 +69,13 @@ export class CalculatorService {
     this.updateMonthlyPayment();
     this.updateWillPayRange();
     this.updateTotalSumm();
-    
   };
   /* end: change handlers */
 
   /* calculations */
 
   updateTermValue = () => {
-    this.termValue = Math.round((config.maxTerm - config.minTerm) / 2);
+    this.termValue = Math.round((config.maxTerm - config.minTerm) / 2+config.minTerm);
   };
 
   getCreditSumm = () => this.carPrice - this.firstPaymentValue;
@@ -85,7 +85,7 @@ export class CalculatorService {
   getMonthlyPayment = (monthCount: number) => {
     const summ = this.getCreditSumm();
     const percent = this.getMonthlyPercent();
-    return percent ** monthCount * ((percent - 1) / (percent ** monthCount - 1))*summ;
+    return percent ** monthCount * ((percent - 1) / (percent ** monthCount - 1)) * summ;
   };
 
   updateMonthlyPayment = () => {
@@ -95,7 +95,7 @@ export class CalculatorService {
   getWillPayRange = () => {
     const minWillPay = this.getMonthlyPayment(config.maxTerm);
     const maxWillPay = this.getMonthlyPayment(config.minTerm);
-    const willPayValue = (maxWillPay-minWillPay)/2;
+    const willPayValue = ((maxWillPay-minWillPay) / 2)+minWillPay;
     return { minWillPay, maxWillPay, willPayValue };
   };
 
@@ -115,9 +115,7 @@ export class CalculatorService {
   getTermByMonthlyPayment = () => {
     const summ = this.getCreditSumm();
     const percent = this.getMonthlyPercent();
-    return Math.round(getBaseLog
-      (1.01,(1+(0.01/((this.willPayValue/summ)-0.01))))
-    );
+    return Math.round(getBaseLog(1.01, 1 + 0.01 / (this.willPayValue / summ - 0.01)));
   };
 
   /* end: calculations */

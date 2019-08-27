@@ -61,7 +61,7 @@ export class CalculatorService {
 
   onChangeWillPayValue = (value: number) => {
     this.willPayValue = value;
-    this.termValue = (Math.round(this.getTermByMonthlyPayment() / 6) + 1) * 6;
+    this.termValue = ((Math.round(this.getTermByMonthlyPayment() / 6) + 1) * 6)>this.maxTerm ? this.maxTerm : ((Math.round(this.getTermByMonthlyPayment() / 6) + 1) * 6);
   };
 
   onChangeTermValue = (value: number) => {

@@ -1,11 +1,15 @@
 <div ngClass="popup">
   <div ngClass="popup__content">
-    <button ngClass="popup__cross-button" (click)="onClose()"><i class="fas fa-times fa-2x" ></i></button>
+    <button ngClass="popup__cross-button" (click)="onClose()">
+      <i class="fas fa-times fa-2x"></i>
+    </button>
     <div ngClass="popup__content-wrapper">
       <div ngClass="popup__img"><i class="fas fa-rocket fa-7x"></i></div>
       <div ngClass="popup__title">Ваша заявка отправлена!</div>
-      <div ngClass="popup__p">Спасибо за обращение! Мы свяжемся с вами в ближайшее время</div>
-      <a [routerLink]="'/catalog'" ngClass="popup__return-button" >Вернуться в каталог</a>
+      <div ngClass="popup__p">
+        Спасибо за обращение! Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время
+      </div>
+      <a [routerLink]="'/catalog'" ngClass="popup__return-button">Вернуться в&nbsp;каталог</a>
     </div>
   </div>
 </div>

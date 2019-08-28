@@ -1,10 +1,12 @@
+@import '../../variables.scss';
+
 .questions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: $mobileWidth) {
     flex-direction: column;
-    align-content:center;
+    align-content: center;
   }
 
   &__button {
@@ -19,17 +21,17 @@
 
   &__text {
     text-align: left;
-    @media screen and (max-width: 1024px) {
-      text-align:center;
-      margin-bottom:20px;
+    @media screen and (max-width: $mobileWidth) {
+      text-align: center;
+      margin-bottom: 20px;
     }
     &-title {
       font-weight: 900;
       margin-bottom: 10px;
-      @media screen and (max-width: 1024px) {
-        margin-bottom:20px;
+      @media screen and (max-width: $mobileWidth) {
+        margin-bottom: 20px;
+      }
     }
-  }
     &-p {
       color: #828282;
     }
@@ -38,8 +40,7 @@
 
 .fa-question-circle {
   color: #f98d56;
-  @media screen and (max-width: 1024px) {
-    margin-bottom:20px;
+  @media screen and (max-width: $mobileWidth) {
+    margin-bottom: 20px;
+  }
 }
-}
-

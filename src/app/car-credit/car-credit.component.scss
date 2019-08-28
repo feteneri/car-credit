@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 $details-height: 170px;
 
 .car-credit {
@@ -12,14 +14,15 @@ $details-height: 170px;
     background: white;
     box-shadow: 0 0 20px rgba(35, 35, 35, 0.2);
     margin-bottom: 20px;
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: $mobileWidth) {
       flex-direction: column;
-      align-content:center;
-      width:100%
+      align-content: center;
+      width: 100%;
+      height: auto;
     }
   }
 
-  &__cross-button {   
+  &__cross-button {
     background-color: transparent;
     border: none;
     color: #828282;
@@ -27,14 +30,13 @@ $details-height: 170px;
     position: absolute;
     right: 10px;
     top: 5px;
-    }
+  }
 
   &__grow {
     flex-grow: 1;
   }
   &__container {
     padding: 40px 0;
-
   }
   &__name {
     font-weight: bold;
@@ -43,9 +45,9 @@ $details-height: 170px;
   &__title {
     display: flex;
     margin-bottom: 30px;
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: $mobileWidth) {
       flex-direction: column;
-      align-content:center;
+      align-content: center;
     }
   }
 
@@ -53,11 +55,18 @@ $details-height: 170px;
     font-size: 32px;
     font-weight: 900;
     margin-right: 10px;
+    @media screen and (max-width: $mobileWidth) {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
   }
 
   &__title-model {
     font-size: 32px;
     color: #828282;
+    @media screen and (max-width: $mobileWidth) {
+      font-size: 24px;
+    }
   }
 
   &__details {
@@ -65,9 +74,9 @@ $details-height: 170px;
     flex-grow: 1;
     justify-content: space-between;
     padding: 20px;
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: $mobileWidth) {
       flex-direction: column;
-      align-content:center;
+      align-content: center;
     }
 
     &-left {
@@ -76,10 +85,11 @@ $details-height: 170px;
       justify-content: space-between;
       flex-grow: 1;
       align-items: start;
-      margin-right: 40px;
-      @media screen and (max-width: 1024px) {
+      margin-right: 100px;
+      @media screen and (max-width: $mobileWidth) {
         flex-direction: column;
-        align-content:center;
+        align-content: center;
+        margin-right: 0;
       }
     }
 
@@ -89,12 +99,14 @@ $details-height: 170px;
       justify-content: space-between;
 
       &__discount {
-        background-color: #f46142;
+        background-color: $main-color;
         color: white;
         height: 25px;
         line-height: 25px;
         border-radius: 10px;
         padding: 0 8px;
+        align-self: center;
+        margin-bottom: 10px;
       }
     }
   }
@@ -102,12 +114,11 @@ $details-height: 170px;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: $mobileWidth) {
       flex-direction: column;
-      align-content:center;
+      align-content: center;
     }
   }
-
 
   &__img {
     height: $details-height;
@@ -116,22 +127,24 @@ $details-height: 170px;
     box-sizing: border-box;
   }
 
-  &__name{
-    @media screen and (max-width: 1024px) {
-      display:flex;
+  &__name {
+    @media screen and (max-width: $mobileWidth) {
+      display: flex;
       flex-direction: column;
-      align-content:center;
+      align-content: center;
+      align-self: center;
+      margin-bottom: 20px;
+      text-emphasis: center;
+    }
   }
-}
 
   &__dealer {
     display: flex;
     justify-content: flex-end;
     color: #828282;
     font-size: 16px;
-    @media screen and (max-width: 1024px) {
-      flex-direction: column;
-      align-content:center;
+    @media screen and (max-width: $mobileWidth) {
+      font-size: 12px;
     }
 
     &-address {
@@ -140,6 +153,7 @@ $details-height: 170px;
 
     &-phone {
       margin: 0 20px 0 10px;
+      white-space: nowrap;
     }
   }
 }

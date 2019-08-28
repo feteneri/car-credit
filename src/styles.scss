@@ -1,13 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import './reset.css';
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import './variables.scss';
 
-html,body {
+html,
+body {
   font-family: 'Montserrat', sans-serif;
 }
 .container {
-  @media screen and (max-width: 1024px) {
-    width: 100%;
+  @media screen and (max-width: $mobileWidth) {
+    width: calc(100% - 40px);
+    margin: 0 20px;
   }
   width: 1000px;
   border-radius: 10px;
@@ -19,5 +22,3 @@ html,body {
 .background {
   background-color: #f2f2f2;
 }
-
-$mobile: '(max-width: 1024px)';

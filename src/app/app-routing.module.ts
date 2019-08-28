@@ -5,14 +5,14 @@ import { CarCreditComponent } from './car-credit/car-credit.component';
 
 const routes: Routes = [
   {
-    path: 'catalog',
+    path: 'car-credit',
     component: CarListComponent,
   },
   {
-    path: 'car/:id',
+    path: 'car-credit/car/:id',
     component: CarCreditComponent,
   },
-  { path: '**', redirectTo: 'catalog', pathMatch: 'full' },
+  { path: '**', redirectTo: 'car-credit', pathMatch: 'full' },
 ];
 
 @NgModule({

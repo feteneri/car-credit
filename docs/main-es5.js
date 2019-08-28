@@ -52,7 +52,7 @@ module.exports = "<div ngClass=\"car-credit-calc\">\r\n  <div ngClass=\"car-cred
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div ngClass=\"car-credit\">\r\n  <div ngClass=\"background\">\r\n    <div ngClass=\"container car-credit__container\">\r\n      <a [routerLink]=\"'/catalog'\" ngClass=\"popup__return-button\">\r\n        <button ngClass=\"car-credit__cross-button\"><i class=\"fas fa-times fa-2x\"></i></button>\r\n      </a>\r\n      <div ngClass=\"car-credit__title\">\r\n        <div ngClass=\"car-credit__title-calc\">Расчет кредита</div>\r\n        <div ngClass=\"car-credit__title-model\">\r\n          {{ car.brand }} {{ car.model }} {{ car.complect }}\r\n        </div>\r\n      </div>\r\n      <div ngClass=\"car-credit__view\">\r\n        <img src=\"{{ car.imgSrc }}\" ngClass=\"car-credit__img\" />\r\n        <div ngClass=\"car-credit__details\">\r\n          <div ngClass=\"car-credit__details-left\">\r\n            <h3 ngClass=\"car-credit__name\">{{ car.brand }} {{ car.model }} {{ car.complect }}</h3>\r\n            <div ngClass=\"car-credit__labels\">\r\n              <app-labeled-value [label]=\"car.engine\" [value]=\"car.engineHp\"></app-labeled-value>\r\n              <app-labeled-value\r\n                [label]=\"car.driveDirection\"\r\n                [value]=\"car.driveType\"\r\n              ></app-labeled-value>\r\n              <app-labeled-value\r\n                [label]=\"car.transmissionQuantity\"\r\n                [value]=\"car.transmissionType\"\r\n              ></app-labeled-value>\r\n            </div>\r\n          </div>\r\n          <div ngClass=\"car-credit__details-right\">\r\n            <div ngClass=\"car-credit__details-right__discount\">\r\n              Скидка {{ car.discount | rubles }}\r\n            </div>\r\n            <app-labeled-value\r\n              [label]=\"'Стоимость\\u00A0автомобиля'\"\r\n              [value]=\"car.price | rubles\"\r\n              [highlight]=\"true\"\r\n            ></app-labeled-value>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div ngClass=\"car-credit__dealer\">\r\n        <i class=\"fas fa-map-marker\"></i>\r\n        <div ngClass=\"car-credit__dealer-address\">{{ car.dealerAddress }}</div>\r\n        <i class=\"fas fa-phone-alt\"></i>\r\n        <div ngClass=\"car-credit__dealer-phone\">{{ car.dealerPhone }}</div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div ngClass=\"container\">\r\n    <app-car-credit-calc [onSubmit]=\"triggerPopup\" [car]=\"car\"></app-car-credit-calc>\r\n  </div>\r\n  <div ngClass=\"background car-credit__grow\">\r\n    <div ngClass=\"container car-credit__container\">\r\n      <app-questions></app-questions>\r\n    </div>\r\n  </div>\r\n  <app-popup *ngIf=\"showPopup\" [onClose]=\"triggerPopup\"></app-popup>\r\n</div>\r\n"
+module.exports = "<div ngClass=\"car-credit\">\r\n  <div ngClass=\"background\">\r\n    <div ngClass=\"container car-credit__container\">\r\n      <a [routerLink]=\"'/car-credit'\" ngClass=\"popup__return-button\">\r\n        <button ngClass=\"car-credit__cross-button\"><i class=\"fas fa-times fa-2x\"></i></button>\r\n      </a>\r\n      <div ngClass=\"car-credit__title\">\r\n        <div ngClass=\"car-credit__title-calc\">Расчет кредита</div>\r\n        <div ngClass=\"car-credit__title-model\">\r\n          {{ car.brand }} {{ car.model }} {{ car.complect }}\r\n        </div>\r\n      </div>\r\n      <div ngClass=\"car-credit__view\">\r\n        <img src=\"{{ car.imgSrc }}\" ngClass=\"car-credit__img\" />\r\n        <div ngClass=\"car-credit__details\">\r\n          <div ngClass=\"car-credit__details-left\">\r\n            <h3 ngClass=\"car-credit__name\">{{ car.brand }} {{ car.model }} {{ car.complect }}</h3>\r\n            <div ngClass=\"car-credit__labels\">\r\n              <app-labeled-value [label]=\"car.engine\" [value]=\"car.engineHp\"></app-labeled-value>\r\n              <app-labeled-value\r\n                [label]=\"car.driveDirection\"\r\n                [value]=\"car.driveType\"\r\n              ></app-labeled-value>\r\n              <app-labeled-value\r\n                [label]=\"car.transmissionQuantity\"\r\n                [value]=\"car.transmissionType\"\r\n              ></app-labeled-value>\r\n            </div>\r\n          </div>\r\n          <div ngClass=\"car-credit__details-right\">\r\n            <div ngClass=\"car-credit__details-right__discount\">\r\n              Скидка {{ car.discount | rubles }}\r\n            </div>\r\n            <app-labeled-value\r\n              [label]=\"'Стоимость\\u00A0автомобиля'\"\r\n              [value]=\"car.price | rubles\"\r\n              [highlight]=\"true\"\r\n            ></app-labeled-value>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div ngClass=\"car-credit__dealer\">\r\n        <i class=\"fas fa-map-marker\"></i>\r\n        <div ngClass=\"car-credit__dealer-address\">{{ car.dealerAddress }}</div>\r\n        <i class=\"fas fa-phone-alt\"></i>\r\n        <div ngClass=\"car-credit__dealer-phone\">{{ car.dealerPhone }}</div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div ngClass=\"container\">\r\n    <app-car-credit-calc [onSubmit]=\"triggerPopup\" [car]=\"car\"></app-car-credit-calc>\r\n  </div>\r\n  <div ngClass=\"background car-credit__grow\">\r\n    <div ngClass=\"container car-credit__container\">\r\n      <app-questions></app-questions>\r\n    </div>\r\n  </div>\r\n  <app-popup *ngIf=\"showPopup\" [onClose]=\"triggerPopup\"></app-popup>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -74,7 +74,7 @@ module.exports = "<div ngClass=\"background\">\r\n  <div ngClass=\"container app
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<a [routerLink]=\"['/car/'+car.id]\" ngClass=\"car-preview\">\r\n  <img src=\"{{car.imgSrc}}\" ngClass=\"car-preview__img\">\r\n  <div ngClass=\"car-preview__info\">\r\n      <div ngClass=\"car-preview__info__count\">{{car.count}}</div>\r\n      <div ngClass=\"car-preview__info__model\">{{car.model}}</div>\r\n      <div ngClass=\"car-preview__info__minprice\">{{car.pricefrom}}</div>\r\n  </div>\r\n</a>\r\n    \r\n\r\n"
+module.exports = "<a [routerLink]=\"['/car-credit/car/'+car.id]\" ngClass=\"car-preview\">\r\n  <img src=\"{{car.imgSrc}}\" ngClass=\"car-preview__img\">\r\n  <div ngClass=\"car-preview__info\">\r\n      <div ngClass=\"car-preview__info__count\">{{car.count}}</div>\r\n      <div ngClass=\"car-preview__info__model\">{{car.model}}</div>\r\n      <div ngClass=\"car-preview__info__minprice\">{{car.pricefrom}}</div>\r\n  </div>\r\n</a>\r\n    \r\n\r\n"
 
 /***/ }),
 
@@ -107,7 +107,7 @@ module.exports = "<div ngClass=\"labeled-value\">\n  <div ngClass=\"labeled-valu
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div ngClass=\"popup\">\r\n  <div ngClass=\"popup__content\">\r\n    <button ngClass=\"popup__cross-button\" (click)=\"onClose()\">\r\n      <i class=\"fas fa-times fa-2x\"></i>\r\n    </button>\r\n    <div ngClass=\"popup__content-wrapper\">\r\n      <div ngClass=\"popup__img\"><i class=\"fas fa-rocket fa-7x\"></i></div>\r\n      <div ngClass=\"popup__title\">Ваша заявка отправлена!</div>\r\n      <div ngClass=\"popup__p\">\r\n        Спасибо за обращение! Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время\r\n      </div>\r\n      <a [routerLink]=\"'/catalog'\" ngClass=\"popup__return-button\">Вернуться в&nbsp;каталог</a>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div ngClass=\"popup\">\r\n  <div ngClass=\"popup__content\">\r\n    <button ngClass=\"popup__cross-button\" (click)=\"onClose()\">\r\n      <i class=\"fas fa-times fa-2x\"></i>\r\n    </button>\r\n    <div ngClass=\"popup__content-wrapper\">\r\n      <div ngClass=\"popup__img\"><i class=\"fas fa-rocket fa-7x\"></i></div>\r\n      <div ngClass=\"popup__title\">Ваша заявка отправлена!</div>\r\n      <div ngClass=\"popup__p\">\r\n        Спасибо за обращение! Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время\r\n      </div>\r\n      <a [routerLink]=\"'/car-credit'\" ngClass=\"popup__return-button\">Вернуться в&nbsp;каталог</a>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -144,14 +144,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     {
-        path: 'catalog',
+        path: 'car-credit',
         component: _car_list_car_list_component__WEBPACK_IMPORTED_MODULE_3__["CarListComponent"],
     },
     {
-        path: 'car/:id',
+        path: 'car-credit/car/:id',
         component: _car_credit_car_credit_component__WEBPACK_IMPORTED_MODULE_4__["CarCreditComponent"],
     },
-    { path: '**', redirectTo: 'catalog', pathMatch: 'full' },
+    { path: '**', redirectTo: 'car-credit', pathMatch: 'full' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

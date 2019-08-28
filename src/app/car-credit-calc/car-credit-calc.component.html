@@ -8,7 +8,7 @@
       [step]="calc.firstPaymentStep"
       [value]="calc.firstPaymentValue"
       [units]="'rubles'"
-      [altValue]="calc.altValueFirstPay"
+      [altValue]="calc.altValueFirstPay | percent"
       [onChange]="calc.onChangeFirstPaymentValue"
     ></app-credit-range>
     <app-credit-range
@@ -33,17 +33,17 @@
   <div ngClass="car-credit-calc__values">
     <app-labeled-value
       [label]="'Сумма\u00A0выплат'"
-      [value]="calc.totalSumm | rubles"
+      [value]="calc.totalSumm | rubles | from"
     ></app-labeled-value>
 
     <app-labeled-value
       [label]="'Процентная\u00A0ставка'"
-      [value]="calc.creditRate + '%'"
+      [value]="calc.creditRate | from | percent"
     ></app-labeled-value>
 
     <app-labeled-value
       [label]="'Платеж в\u00A0месяц'"
-      [value]="calc.monthlyPayment | rubles"
+      [value]="calc.monthlyPayment | rubles | from"
       [highlight]="true"
     ></app-labeled-value>
     

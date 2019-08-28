@@ -18,3 +18,4 @@ export class RublesPipe implements PipeTransform {
       .join('')} ₽`;
   }
 }
+

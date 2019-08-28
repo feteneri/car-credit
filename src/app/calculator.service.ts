@@ -60,7 +60,7 @@ export class CalculatorService {
   };
 
   onChangeWillPayValue = (value: number) => {
-    this.willPayValue = value;
+    this.willPayValue = Math.round(value);
     this.termValue = ((Math.round(this.getTermByMonthlyPayment() / 6) + 1) * 6)>this.maxTerm ? this.maxTerm : ((Math.round(this.getTermByMonthlyPayment() / 6) + 1) * 6);
   };
 
@@ -95,7 +95,7 @@ export class CalculatorService {
   getWillPayRange = () => {
     const minWillPay = this.getMonthlyPayment(config.maxTerm);
     const maxWillPay = this.getMonthlyPayment(config.minTerm);
-    const willPayValue = ((maxWillPay-minWillPay) / 2)+minWillPay;
+    const willPayValue = Math.round(((maxWillPay-minWillPay) / 2)+minWillPay);
     return { minWillPay, maxWillPay, willPayValue };
   };
 
@@ -103,7 +103,7 @@ export class CalculatorService {
     const { minWillPay, maxWillPay, willPayValue } = this.getWillPayRange();
     this.minWillPay = minWillPay;
     this.maxWillPay = maxWillPay;
-    this.willPayValue = willPayValue;
+    this.willPayValue = Math.round(willPayValue);
   };
 
   getTotalSumm = () => this.monthlyPayment * this.termValue;

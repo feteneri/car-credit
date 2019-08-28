@@ -14,6 +14,9 @@ import { QuestionsComponent } from './questions/questions.component';
 import { PopupComponent } from './popup/popup.component';
 import { RublesPipe } from './rubles.pipe';
 import { PeriodPipe } from './period.pipe';
+import { FromPipe } from './from.pipe';
+import { PercentPipe } from './percent.pipe';
+import { BeforePipe } from './before.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { PeriodPipe } from './period.pipe';
     QuestionsComponent,
     PopupComponent,
     RublesPipe,
-    PeriodPipe
+    PeriodPipe,
+    FromPipe,
+    PercentPipe,
+    BeforePipe
   ],
   imports: [
     BrowserModule,
